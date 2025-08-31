@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import VideoPlayer, { VideoPlayerRef } from '@/components/VideoPlayer';
 import SyncControls from '@/components/SyncControls';
+import OverlayVideoSection from '@/components/OverlayVideoSection';
 import heroImage from '@/assets/f1-hero.jpg';
 
 const Index = () => {
@@ -56,18 +57,8 @@ const Index = () => {
 
       {/* Main Content */}
       <div className="container mx-auto px-6 py-8">
-        {/* Sync Controls */}
-        <div className="mb-8">
-          <SyncControls 
-            onPlayBoth={handlePlayBoth}
-            onPauseBoth={handlePauseBoth}
-            onSyncBoth={handleSyncBoth}
-            isPlaying={isPlaying}
-          />
-        </div>
-
         {/* Video Players Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
           <VideoPlayer 
             ref={video1Ref}
             title="Video 1 - Giro A"
@@ -77,6 +68,24 @@ const Index = () => {
             ref={video2Ref}
             title="Video 2 - Giro B"
             className="w-full"
+          />
+        </div>
+
+        {/* Sync Controls */}
+        <div className="mb-12">
+          <SyncControls 
+            onPlayBoth={handlePlayBoth}
+            onPauseBoth={handlePauseBoth}
+            onSyncBoth={handleSyncBoth}
+            isPlaying={isPlaying}
+          />
+        </div>
+
+        {/* Overlay Video Section */}
+        <div className="mb-12">
+          <OverlayVideoSection 
+            video1Ref={video1Ref}
+            video2Ref={video2Ref}
           />
         </div>
 
