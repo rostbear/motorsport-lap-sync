@@ -1,73 +1,57 @@
-# Welcome to your Lovable project
+# Motorsport Lap Sync
 
-## Project info
+A powerful tool for analyzing and comparing motorsport laps with perfect synchronization.
 
-**URL**: https://lovable.dev/projects/950f35c3-842b-49e7-b5d9-dc0393f0a22c
+## Features
 
-## How can I edit this code?
+- **Dual Video Support**: Load and compare two motorsport lap videos side by side
+- **Frame-by-Frame Control**: Precise synchronization with frame-level accuracy
+- **Speed Control**: Adjust playback speed from 0.05x to 4x for detailed analysis
+- **Start Offset Control**: Set custom starting points for each video
+- **Audio Controls**: Individual volume and mute controls for each video
+- **Synchronized Playback**: Play both videos simultaneously from their start points
 
-There are several ways of editing your application.
+## Getting Started
 
-**Use Lovable**
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd motorsport-lap-sync
+   ```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/950f35c3-842b-49e7-b5d9-dc0393f0a22c) and start prompting.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Changes made via Lovable will be committed automatically to this repo.
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-**Use your preferred IDE**
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Usage
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. **Load Videos**: Upload video files or provide direct URLs
+2. **Set Start Points**: Use frame controls to set precise starting positions
+3. **Synchronize**: Use the sync controls to play both videos from their start points
+4. **Analyze**: Adjust speed, pause, and navigate through the laps for detailed comparison
 
-Follow these steps:
+## Technology Stack
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **Frontend**: React + TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui
+- **Build Tool**: Vite
+- **Video Handling**: HTML5 Video API
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Contributing
 
-# Step 3: Install the necessary dependencies.
-npm i
+Feel free to submit issues and enhancement requests!
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## License
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/950f35c3-842b-49e7-b5d9-dc0393f0a22c) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is open source and available under the MIT License.

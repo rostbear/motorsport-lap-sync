@@ -1,8 +1,7 @@
 import { useState, useRef } from 'react';
 import VideoPlayer, { VideoPlayerRef } from '@/components/VideoPlayer';
 import SyncControls from '@/components/SyncControls';
-import OverlayVideoSection from '@/components/OverlayVideoSection';
-import heroImage from '@/assets/f1-hero.jpg';
+import KeyframeComparison from '@/components/KeyframeComparison';
 
 const Index = () => {
   const video1Ref = useRef<VideoPlayerRef>(null);
@@ -40,19 +39,19 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-f1-dark to-background">
       {/* Hero Section */}
-      <section className="relative h-64 overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+      <section className="relative h-64 overflow-hidden bg-f1-dark">
         <div className="relative h-full flex items-center justify-center text-center px-6">
           <div>
+            {/* F1 Car Logo */}
+            <div className="mb-4 flex justify-center">
+              <div className="text-6xl">🏎️</div>
+            </div>
+            
             <h1 className="text-4xl md:text-6xl font-bold bg-gradient-f1 bg-clip-text text-transparent mb-4">
-              F1 Lap Sync
+              Motorsport Lap Sync
             </h1>
             <p className="text-xl text-f1-silver max-w-2xl">
-              Confronta e analizza giri di Formula 1 con sincronizzazione perfetta
+              Confronta e analizza giri di motorsport con sincronizzazione perfetta
             </p>
           </div>
         </div>
@@ -64,12 +63,12 @@ const Index = () => {
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
           <VideoPlayer 
             ref={video1Ref}
-            title="Video 1 - Giro A"
+            title="Giocatore 1"
             className="w-full"
           />
           <VideoPlayer 
             ref={video2Ref}
-            title="Video 2 - Giro B"
+            title="Giocatore 2"
             className="w-full"
           />
         </div>
@@ -81,12 +80,14 @@ const Index = () => {
             onPauseBoth={handlePauseBoth}
             onSyncBoth={handleSyncBoth}
             isPlaying={isPlaying}
+            video1Ref={video1Ref}
+            video2Ref={video2Ref}
           />
         </div>
 
-        {/* Overlay Video Section */}
+        {/* Keyframe Comparison */}
         <div className="mb-12">
-          <OverlayVideoSection 
+          <KeyframeComparison 
             video1Ref={video1Ref}
             video2Ref={video2Ref}
           />
@@ -95,13 +96,13 @@ const Index = () => {
         {/* Instructions */}
         <div className="mt-12 text-center">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-f1-gold mb-6">Come utilizzare F1 Lap Sync</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            <h2 className="text-2xl font-bold text-f1-gold mb-6">Come utilizzare Motorsport Lap Sync</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
               <div className="bg-card border border-border rounded-lg p-6">
                 <div className="text-f1-red text-2xl font-bold mb-2">1</div>
                 <h3 className="font-semibold mb-2 text-f1-gold">Carica i Video</h3>
                 <p className="text-muted-foreground">
-                  Carica due video da confrontare tramite file locale o URL. Supporta tutti i formati video comuni.
+                  Carica due video da confrontare tramite file locale. Supporta tutti i formati video comuni.
                 </p>
               </div>
               
@@ -115,9 +116,19 @@ const Index = () => {
               
               <div className="bg-card border border-border rounded-lg p-6">
                 <div className="text-f1-red text-2xl font-bold mb-2">3</div>
-                <h3 className="font-semibold mb-2 text-f1-gold">Analizza</h3>
+                <h3 className="font-semibold mb-2 text-f1-gold">Imposta i Keyframe</h3>
                 <p className="text-muted-foreground">
-                  Confronta le performance utilizzando "Play Entrambi" per una sincronizzazione perfetta dei giri.
+                  Usa i pulsanti "Keyframe 1" e "Keyframe 2" in ogni video per misurare segmenti specifici. 
+                  Il primo keyframe marca l'inizio del segmento, il secondo la fine.
+                </p>
+              </div>
+              
+              <div className="bg-card border border-border rounded-lg p-6">
+                <div className="text-f1-red text-2xl font-bold mb-2">4</div>
+                <h3 className="font-semibold mb-2 text-f1-gold">Confronta le Performance</h3>
+                <p className="text-muted-foreground">
+                  Una volta impostati i keyframe in entrambi i video, la sezione "Confronto Keyframe" 
+                  mostrerà automaticamente quale video è più veloce nel segmento misurato.
                 </p>
               </div>
             </div>
