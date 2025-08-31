@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
-import { Play, Pause, SkipBack, SkipForward, Upload } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Upload, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface VideoPlayerProps {
@@ -20,6 +20,9 @@ export interface VideoPlayerRef {
   getCurrentTime: () => number;
   setPlaybackRate: (rate: number) => void;
   stepFrame: (direction: 'forward' | 'backward') => void;
+  getVideoUrl: () => string;
+  getStartOffset: () => number;
+  clearVideo: () => void;
 }
 
 const VideoPlayer = forwardRef<VideoPlayerRef, VideoPlayerProps>(
@@ -68,6 +71,16 @@ const VideoPlayer = forwardRef<VideoPlayerRef, VideoPlayerProps>(
           videoRef.current.currentTime = newTime;
           setCurrentTime(newTime);
         }
+      },
+      getVideoUrl: () => videoUrl,
+      getStartOffset: () => startOffset,
+      clearVideo: () => {
+        setVideoUrl('');
+        setUrlInput('');
+        setCurrentTime(0);
+        setStartOffset(0);
+        setDuration(0);
+        setIsPlaying(false);
       }
     }));
 
@@ -248,6 +261,14 @@ const VideoPlayer = forwardRef<VideoPlayerRef, VideoPlayerProps>(
                     variant="secondary"
                   >
                     <SkipForward className="h-4 w-4" />
+                  </Button>
+
+                  <Button
+                    onClick={() => ref && 'current' in ref && ref.current?.clearVideo()}
+                    size="sm"
+                    variant="destructive"
+                  >
+                    <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
               </div>

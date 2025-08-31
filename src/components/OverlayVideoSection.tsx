@@ -35,9 +35,22 @@ const OverlayVideoSection = ({ video1Ref, video2Ref }: OverlayVideoSectionProps)
           >
             {/* Base video */}
             <div className="absolute inset-0">
-              <div className="w-full h-full bg-muted/20 flex items-center justify-center text-muted-foreground">
-                Video di base (Video {overlayVideo === 'video2' ? '1' : '2'})
-              </div>
+              {(() => {
+                const baseVideoRef = overlayVideo === 'video2' ? video1Ref : video2Ref;
+                const baseVideoUrl = baseVideoRef.current?.getVideoUrl();
+                return baseVideoUrl ? (
+                  <video
+                    src={baseVideoUrl}
+                    className="w-full h-full object-contain"
+                    muted
+                    loop
+                  />
+                ) : (
+                  <div className="w-full h-full bg-muted/20 flex items-center justify-center text-muted-foreground">
+                    Video di base (Video {overlayVideo === 'video2' ? '1' : '2'}) - Nessun video caricato
+                  </div>
+                );
+              })()}
             </div>
             
             {/* Overlay video */}
@@ -49,9 +62,22 @@ const OverlayVideoSection = ({ video1Ref, video2Ref }: OverlayVideoSectionProps)
                 mixBlendMode: 'normal'
               }}
             >
-              <div className="w-full h-full bg-muted/30 flex items-center justify-center text-muted-foreground">
-                Video sovrapposto (Video {overlayVideo})
-              </div>
+              {(() => {
+                const overlayVideoRef = overlayVideo === 'video1' ? video1Ref : video2Ref;
+                const overlayVideoUrl = overlayVideoRef.current?.getVideoUrl();
+                return overlayVideoUrl ? (
+                  <video
+                    src={overlayVideoUrl}
+                    className="w-full h-full object-contain"
+                    muted
+                    loop
+                  />
+                ) : (
+                  <div className="w-full h-full bg-muted/30 flex items-center justify-center text-muted-foreground">
+                    Video sovrapposto (Video {overlayVideo}) - Nessun video caricato
+                  </div>
+                );
+              })()}
             </div>
           </div>
         </div>

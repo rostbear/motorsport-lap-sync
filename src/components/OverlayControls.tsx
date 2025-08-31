@@ -50,8 +50,11 @@ export default function OverlayControls({
   };
 
   const handleSyncBoth = () => {
-    video1Ref.current?.setCurrentTime(0);
-    video2Ref.current?.setCurrentTime(0);
+    const video1StartOffset = video1Ref.current?.getStartOffset() || 0;
+    const video2StartOffset = video2Ref.current?.getStartOffset() || 0;
+    
+    video1Ref.current?.setCurrentTime(video1StartOffset);
+    video2Ref.current?.setCurrentTime(video2StartOffset);
     
     setTimeout(() => {
       video1Ref.current?.play();
